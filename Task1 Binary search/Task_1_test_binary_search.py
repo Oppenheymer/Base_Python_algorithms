@@ -7,15 +7,17 @@
 @Author:     Mentor
 @Software:   PyCharm
 """
+import random
 # Добавляем модуль для тестирования функции
 import unittest
 # Из нашего файла с функцией импортируем саму функцию для бинарного поиска
-from Task_1_binary_search import binary_search
-
+from Task1_binary_search import binary_search_func
+# Импортируем функцию для создания произвольных массивов
+from Task1_random_array_generator import random_array_func
 
 class BinarySearchTestCase(unittest.TestCase):
     """
-    Класс для тестирования функции binary_search Task_1_binary_search.py
+    Класс для тестирования функции binary_search_func Task_1_binary_search.py
     (бинарный поиск элемента в отсортированном массиве)
     """
 
@@ -31,20 +33,17 @@ class BinarySearchTestCase(unittest.TestCase):
             index: номер элемента, значение которого совпадает с заданным знач.
         """
         # Пример списка для выполнения функции бинарного поиска
-        test_list = [
-            12, 13, 15, 19, 20, 22, 25, 26, 28, 33, 34, 38, 39, 40,
-            43, 45, 67, 71, 83, 84, 85, 89, 91, 103, 129, 139, 141,
-            189, 190, 199, 290, 291, 293, 789, 795, 797, 799, 947,
-            969, 960, 1005, 1009, 2005, 2007, 6091, 20034, 70067
-        ]
+        test_list = random_array_func()
 
         # Пример значения для выполнения функции бинарного поиска
-        test_value = 291
+        test_value = test_list[random.randint(0, len(test_list)-1)]
 
         # Задаем тест-функцию, реализующую бинарный поиск
-        test_binary_search = binary_search(test_list, test_value)
+        test_binary_search = binary_search_func(test_list, test_value)
+
         # Сравниваем результат работы алгоритма с выходным значением
-        self.assertEqual(test_binary_search, 31)
+        self.assertEqual(test_list[test_binary_search],
+                        test_list[test_list.index(test_value)])
 
 
 # Проверка теста

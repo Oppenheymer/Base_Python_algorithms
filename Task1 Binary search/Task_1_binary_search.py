@@ -15,7 +15,7 @@
 """
 
 
-def binary_search(data_list, desire_value):
+def binary_search_func(data_list, desire_value):
     """
     Функция, реализующая бинарный поиск в упорядоченном по возрастанию массиве
     целочисленных значений.

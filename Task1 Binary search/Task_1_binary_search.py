@@ -14,6 +14,10 @@
 в отсортированном массиве путем многократного деления интервала поиска пополам.
 """
 
+# Импортируем библиотеку случайных чисел
+import random
+# Импортируем функцию для создания произвольных массивов
+from Task1_random_array_generator import random_array_func
 
 def binary_search_func(data_list, desire_value):
     """

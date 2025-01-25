@@ -1,9 +1,9 @@
 # !/usr/bin/env python
 # -- coding: utf-8 --
 """
-@Filename:   Task_1_binary_search.py
-@Date:       06.04.2024
-@Time:       14:05
+@Filename:   Task1_binary_search.py
+@Date:       25.01.2025
+@Time:       18:51
 @Author:     Mentor
 @Software:   PyCharm
 """
@@ -70,18 +70,50 @@ def binary_search(data_list, desire_value):
 
 
 if __name__ == '__main__':
-    # Пример списка для выполнения функции бинарного поиска
-    example_list = [12, 13, 15, 19, 20, 22, 25, 26, 28, 33, 34, 38, 39, 40,
-                    43, 45, 67, 71, 83, 84, 85, 89, 91, 103, 129, 139, 141,
-                    189, 190, 199, 290, 291, 293, 789, 795, 797, 799, 947,
-                    969, 960, 1005, 1009, 2005, 2007, 6091, 20034, 70067]
+    # Блок работы программы с пользовательскими данными
+    try:
+        # Задаем пользовательский список
+        my_list = []
+        for num_element in input('\nВведите элементы числового массива, '
+                                'в котором будет производиться бинарный поиск,'
+                                ' через "пробел":\n\t').split():
+            my_list.append(int(num_element))
+            # Сортируем массив по возрастанию
+            my_list.sort()
 
-    # Пример значения для выполнения функции бинарного поиска (входит в список)
-    example_value = 795
+        # Задаем пользовательское значение
+        my_value = int(input('\nВведите число, '
+                            'которое необходимо найти в массиве:\n\t'))
 
-    example_binary_search = binary_search(example_list, example_value)
+        print('\nМой список для бинарного поиска\n', my_list)
+        print('\nМое число для поиска в массиве \n', my_value)
+        # Задаем функцию бинарного поиска
+        my_binary_search = binary_search_func(my_list, my_value)
 
-    if ((example_binary_search != -1) and (example_binary_search != None)):
-        print(
-            f'Элемент списка с индексом {example_binary_search} '
-            f'соответствует заданному значению {example_value}')
+        if ((my_binary_search != -1) and (my_binary_search != None)):
+            print(
+                f'\nЭлемент списка с индексом {my_binary_search} '
+                f'соответствует заданному значению  {my_value}.')
+
+    # В случае ошибки ввода или отсутствия данных программа будет работать
+    # с произвольными значениями, заданными по умолчанию для функции
+    except ValueError:
+        # Запуск функции с произвольными данными
+        print('\nВведенные пользовательские данные не позволяют '
+            'адекватно работать алгоритму программы.\n'
+            'Пример работы функции с произвольными значениями:\n')
+
+        # Пример списка для выполнения функции бинарного поиска
+        example_list = random_array_func()
+        print('\nПример сгенерированного списка\n', example_list)
+
+        # Пример для выполнения функции бинарного поиска (входит в список)
+        example_value = example_list[random.randint(0, len(example_list)-1)]
+        print('\nПример числа из сгенерированного списка\n', example_value)
+
+        example_binary_search = binary_search_func(example_list, example_value)
+
+        if ((example_binary_search != -1) and (example_binary_search != None)):
+            print(
+                f'\nЭлемент списка с индексом {example_binary_search} '
+                f'соответствует заданному значению  {example_value}.')
